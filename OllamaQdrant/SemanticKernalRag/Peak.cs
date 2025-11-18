@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.VectorData; 
 
-
-using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using Microsoft.Extensions.VectorData;
-
- 
-
+namespace SemanticKernalRag;
 public class Peak
 {
-    [VectorStoreRecordKey]
+   [ Microsoft.Extensions.VectorData.VectorStoreRecordKey]
+ 
     public Guid Key { get; set; } = Guid.NewGuid();
 
     // Core metadata

@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-
- 
-
+﻿namespace SemanticKernalRag;
 public static class PeakDatabase
 {
     public static List<Peak> GetPeaks()

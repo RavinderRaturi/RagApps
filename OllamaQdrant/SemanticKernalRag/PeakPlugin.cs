@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Text;
 
- 
+namespace SemanticKernalRag;
 
 public class PeakPlugin
 {

@@ -7,7 +7,7 @@ using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Qdrant.Client;
 
- 
+namespace SemanticKernalRag;
 
 internal class Program
 {
@@ -17,7 +17,7 @@ internal class Program
         var ollamaEndpoint = new Uri("http://localhost:11434");
         var qdrantEndpoint = new Uri("http://localhost:6334");
 
-        const string chatModelId = "gemma3:12b";
+        const string chatModelId = "qwen3-vl:2b";
         const string embeddingModelId = "nomic-embed-text";
         const string collectionName = "peaks";
 
@@ -119,8 +119,12 @@ internal class Program
 
             chatHistory.AddUserMessage(prompt);
 
-            var response = chatClient.GetStreamingChatMessageContentsAsync(chatHistory);
-
+            //     var response = chatClient.GetStreamingChatMessageContentsAsync(chatHistory);
+            var response = chatClient.GetStreamingChatMessageContentsAsync(chatHistory, new PromptExecutionSettings
+            {
+                FunctionChoiceBehavior = FunctionChoiceBehavior.Auto()
+            }, kernel
+            );
 
             var responseText = new StringBuilder();
             await foreach (var r in response)
